@@ -1,5 +1,4 @@
 
-#include <string.h>
 
 char* path  = "C:\\Program Files\\IYSEFW\\HTML5\\js\\info.js";
 char* name  = "SYS_INFO";
