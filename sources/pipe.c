@@ -7,33 +7,32 @@ void show()
 
 int pipe(char* cmd,char* Path,char* var)
 {
-    FILE *FP;
-    FILE *fp;
+    FILE *JSFile;     
+    FILE *Terminal;
     char path[PATH_MAX];
     char str[4000];
     int i;
     for(i=0;i<strlen(str);i++){str[i]=0;}
 
-    FP = fopen(Path, "w");
-    fp = popen(cmd, "r");
+    JSFile   = fopen(Path, "w");
+    Terminal = popen(cmd, "r");
 
     strcat(str,var);
     strcat(str,"=`");
 
-    if (fp == NULL){
+    if (Terminal == NULL){
         printf("Pipeline Error");
     }
 
-    while (fgets(path, PATH_MAX, fp) != NULL)
+    while (fgets(path, PATH_MAX, Terminal) != NULL)
         strcat(str,path);
         
     strcat(str,"`");
-    fputs(str,FP);
-    fclose(FP);
+    fputs(str,JSFile);
+    fclose(JSFile);
     printf("%s",str);
-    pclose(fp);
+    pclose(Terminal);
     show();
 }
 
 
-//IYSEFW IS YOUR SYSTEM ENOUGH FOR Windows 11
