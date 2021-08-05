@@ -1,9 +1,9 @@
 @echo off
+
 IF EXIST "c:\temp". (
      echo found
 ) ELSE (
      mkdir "c:\temp"
-     
 )
 echo %cd% > "c:\temp\temp.txt"
 :: ------- Self-elevating.bat --------------------------------------
@@ -25,7 +25,7 @@ IF EXIST "c:\Program Files\IYSEFW". (
 ) ELSE (
      mkdir "c:\Program Files\IYSEFW"
 )
-set /p P=<c:\temp\t.txt
+set /p P=<c:\temp\temp.txt
 xcopy /s %P% "c:\Program Files\IYSEFW"
 "C:\Program Files\IYSEFW\main.exe"
 
