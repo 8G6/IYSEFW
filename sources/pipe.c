@@ -1,9 +1,3 @@
-void show()
-{
-    printf("\n\nOpening Results\n");
-    system("\"C:\\Program Files\\IYSEFW\\HTML5\\index.html\"");
-    printf("\n");
-}
 
 int pipe(char* cmd,char* Path,char* var)
 {
@@ -12,27 +6,30 @@ int pipe(char* cmd,char* Path,char* var)
     char path[PATH_MAX];
     char str[4000];
     int i;
-    for(i=0;i<strlen(str);i++){str[i]=0;}
+    char path2[PATH_MAX];
+    for(i=0;i<4000;i++){str[i]=0;}
 
-    JSFile   = fopen(Path, "w");
+    JSFile   = fopen(Path, "a+");
     Terminal = popen(cmd, "r");
 
+    strcat(str,"let ");
     strcat(str,var);
     strcat(str,"=`");
 
     if (Terminal == NULL){
         printf("Pipeline Error");
     }
-
-    while (fgets(path, PATH_MAX, Terminal) != NULL)
+    
+    while(fgets(path,PATH_MAX,Terminal)!=NULL)
+    {
+        strcpy(path2,path);
         strcat(str,path);
-        
-    strcat(str,"`");
+        printf("%s",path2);
+    }
+    
+    strcat(str,"`;");
     fputs(str,JSFile);
     fclose(JSFile);
-    printf("%s",str);
-    pclose(Terminal);
-    show();
+    return pclose(Terminal);
 }
-
 
