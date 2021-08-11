@@ -1,7 +1,6 @@
 @echo off
-
 IF EXIST "c:\temp". (
-     echo found
+     echo c:\temp folder exists  
 ) ELSE (
      mkdir "c:\temp"
 )
@@ -27,5 +26,7 @@ IF EXIST "c:\Program Files\IYSEFW". (
 )
 set /p P=<c:\temp\temp.txt
 xcopy /s %P% "c:\Program Files\IYSEFW"
+powershell "Expand-Archive -Force 'C:\Program Files\IYSEFW/main.zip' 'C:\Program Files\IYSEFW'" 
 "C:\Program Files\IYSEFW\main.exe"
+
 

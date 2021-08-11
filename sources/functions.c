@@ -1,4 +1,3 @@
-
 void show()
 {
     printf("\n\nOpening Results\n");
@@ -8,7 +7,6 @@ void show()
 
 void timestamp(){
     
-
     SYSTEMTIME t;
     GetLocalTime(&t);
 
