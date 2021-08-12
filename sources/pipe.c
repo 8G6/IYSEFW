@@ -4,17 +4,17 @@ int pipe(char* cmd,char* Path,char* var)
     FILE *JSFile;     
     FILE *Terminal;
     char path[PATH_MAX];
-    char str[4000];
+    char str[500];
     int i;
-    char path2[PATH_MAX];
-    for(i=0;i<4000;i++){str[i]=0;}
+    char copy[PATH_MAX];
+    for(i=0;i<500;i++){str[i]=0;}
 
     JSFile   = fopen(Path, "a+");
     Terminal = popen(cmd, "r");
 
-    strcat(str,"let ");
-    strcat(str,var);
-    strcat(str,"=`");
+    fputs("let ",JSFile);
+    fputs(var,JSFile);
+    fputs("=`",JSFile);
 
     if (Terminal == NULL){
         printf("Pipeline Error");
@@ -22,13 +22,10 @@ int pipe(char* cmd,char* Path,char* var)
     
     while(fgets(path,PATH_MAX,Terminal)!=NULL)
     {
-        strcpy(path2,path);
-        strcat(str,path);
-        printf("%s",path2);
+        fputs(path,JSFile);
     }
     
-    strcat(str,"`;");
-    fputs(str,JSFile);
+    fputs("`\n\n",JSFile);
     fclose(JSFile);
     return pclose(Terminal);
 }

@@ -25,6 +25,11 @@ void timestamp(){
     }
 }
 
+void check(int out,char* string){
+    out==0 && printf("%s cammand runned sucessfully\n");
+    out!=0 && printf("%s cammand failed\n");
+}
+
 void clear(char* Path){
     FILE *JS;
     JS = fopen("C:\\Program Files\\IYSEFW\\HTML5\\js\\info.js", "w");

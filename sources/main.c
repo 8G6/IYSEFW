@@ -11,7 +11,7 @@ int main()
     int f = pipe(dx_cmd,path,dx_name);
     int arr[] = {a,b,c,d,e,f};
     for(i=0;i<6;i++){
-    printf("\n\n%d\n\n",arr[i]);
+    check(arr[i],string[i]);
     }
     show();
 }
