@@ -1,18 +1,16 @@
-#include "head.c"
+#include "headers/head.c"
 
 int main()
 { 
-    clear(path);
-    int a = pipe(tpm_cmd,path,tpm_name);
-    int b = pipe(cpu_cmd,path,cpu_name);
-    int c = pipe(rom_cmd,path,rom_name);
-    int d = pipe(ram_cmd,path,ram_name);
-    int e = pipe(bios_cmd,path,bios_name);
-    int f = pipe(dx_cmd,path,dx_name);
-    int arr[] = {a,b,c,d,e,f};
-    for(i=0;i<6;i++){
-    check(arr[i],string[i]);
-    }
+    clear(Path);
+    pipe(tpm_cmd,  "TPM",     "\nTrusted Platform Module ");
+    pipe(cpu_cmd,  "CPU",     "\nCPU ");
+    pipe(rom_cmd,  "ROM",     "\nMain ROM ");
+    pipe(romt_cmd, "ROMT",     "\nAdiitional ROM ");
+    pipe(ram_cmd,  "RAM",     "\nRAM ");
+    pipe(bios_cmd, "BIOS",    "\nBIOS ");
+    pipe(gpu_cmd,  "GPU",     "\nGPU ");
+    pipe(dx_cmd  , "DirectX", "\nDirectX ");
     show();
 }
 

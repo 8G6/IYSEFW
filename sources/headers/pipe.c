@@ -1,5 +1,5 @@
 
-int pipe(char* cmd,char* Path,char* var)
+int pipe(char* cmd,char* var,char* name)
 {
     FILE *JSFile;     
     FILE *Terminal;
@@ -7,7 +7,9 @@ int pipe(char* cmd,char* Path,char* var)
     char str[500];
     int i;
     char copy[PATH_MAX];
-    for(i=0;i<500;i++){str[i]=0;}
+    for(i=0;i<500;i++){
+        str[i]=0;
+    }
 
     JSFile   = fopen(Path, "a+");
     Terminal = popen(cmd, "r");
@@ -20,13 +22,15 @@ int pipe(char* cmd,char* Path,char* var)
         printf("Pipeline Error");
     }
     
-    while(fgets(path,PATH_MAX,Terminal)!=NULL)
-    {
+    while(fgets(path,PATH_MAX,Terminal)!=NULL){
         fputs(path,JSFile);
     }
     
-    fputs("`\n\n",JSFile);
+    fputs("`\n",JSFile);
     fclose(JSFile);
-    return pclose(Terminal);
+    int out=pclose(Terminal);
+
+    out==0 && printf("%s cammand runned sucessfully\n",name);
+    out!=0 && printf("%s cammand failed\n",name);
 }
 

@@ -1,7 +1,7 @@
 void show()
 {
     printf("\n\nOpening Results\n");
-    system("\"C:\\Program Files\\IYSEFW\\HTML5\\index.html\"");
+    system("HTML5\\index.html");
     printf("\n");
 }
 
@@ -9,11 +9,19 @@ void timestamp(){
     
     SYSTEMTIME t;
     GetLocalTime(&t);
-
-    int arr[]={t.wDay,t.wMonth,t.wYear,t.wHour,t.wMinute,t.wSecond,t.wMilliseconds};
-
-    for(i=0;i<50;i++){str[i]=0;}
     
+    int arr[]={
+               t.wDay,
+               t.wMonth,
+               t.wYear,
+               t.wHour,
+               t.wMinute,
+               t.wSecond,
+               t.wMilliseconds
+              };
+
+    for(i=0;i<50;i++){str[i]=0;};
+
     for(i=0;i<7;i++){
       sprintf(temp, "%d", arr[i]);
       len=strlen(temp); 
@@ -25,15 +33,10 @@ void timestamp(){
     }
 }
 
-void check(int out,char* string){
-    out==0 && printf("%s cammand runned sucessfully\n");
-    out!=0 && printf("%s cammand failed\n");
-}
-
-void clear(char* Path){
+void clear(){
     FILE *JS;
-    JS = fopen("C:\\Program Files\\IYSEFW\\HTML5\\js\\info.js", "w");
-    fputs("//  Created By C Source File in ",JS);
+    JS = fopen(Path, "w");
+    fputs("//Created By C Source File in ",JS);
     timestamp();
     fputs(str,JS);
     fputs("\n",JS);

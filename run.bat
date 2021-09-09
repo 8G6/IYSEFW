@@ -1,10 +1,5 @@
 @echo off
-IF EXIST "c:\temp". (
-     echo c:\temp folder exists  
-) ELSE (
-     mkdir "c:\temp"
-)
-echo %cd% > "c:\temp\temp.txt"
+
 :: ------- Self-elevating.bat --------------------------------------
 @whoami /groups | find "S-1-16-12288" > nul && goto :admin
 set "ELEVATE_CMDLINE=cd /d "%~dp0" & call "%~f0" %*"
@@ -18,15 +13,7 @@ cscript //nologo temp.vbs & del temp.vbs & exit /b
 ::: objShell.ShellExecute "cmd", "/c " & strCommandLine, "", "runas"
 :admin -------------------------------------------------------------
 
-
-IF EXIST "c:\Program Files\IYSEFW". (
-     echo installed
-) ELSE (
-     mkdir "c:\Program Files\IYSEFW"
-)
-set /p P=<c:\temp\temp.txt
-xcopy /s %P% "c:\Program Files\IYSEFW"
-powershell "Expand-Archive -Force 'C:\Program Files\IYSEFW/main.zip' 'C:\Program Files\IYSEFW'" 
-"C:\Program Files\IYSEFW\main.exe"
+cls
+main.exe
 
 
