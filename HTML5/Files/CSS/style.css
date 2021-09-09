@@ -1,0 +1,40 @@
+.align{
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+body{
+    background: linear-gradient(to left, #005C97, #363795);
+}
+.center{
+    top:50%;
+    left:50%;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
+
+.box{
+  width: 15em;
+  height: 15em;
+}
+
+img{
+    filter: drop-shadow(3px 3px 4px rgb(1, 20, 20));
+    width: 5em;
+    height: 5em;
+}
+
+h1{
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   text-align: center;
+   color: antiquewhite;
+   text-shadow:rgb(0, 0, 0) 2px 2px 2px;
+   font-size: 40px;
+}
+
+.ram{
+    width:10em;
+    height:15em;
+}
